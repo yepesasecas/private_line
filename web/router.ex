@@ -20,7 +20,10 @@ defmodule PrivateLine.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PrivateLine do
-  #   pipe_through :api
-  # end
+  scope "/api", PrivateLine do
+    pipe_through :api
+    scope "/v1", V1, as: :v1 do
+      get "/keys",  KeysController, :index
+    end
+  end
 end
