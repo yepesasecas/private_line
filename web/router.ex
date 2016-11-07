@@ -17,13 +17,10 @@ defmodule PrivateLine.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/rommel", PageController, :index
-    get "/orders", GetJsonController, :index
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", PrivateLine do
-    pipe_through :api
-    get "/orders", GetJsonController, :index
-  end
+  # scope "/api", PrivateLine do
+  #   pipe_through :api
+  # end
 end
