@@ -10,6 +10,8 @@ defmodule PrivateLine.V1.KeysController do
     msg = "Hello world, Testing my 12345 build.xml"
     {:ok, encrypted_msg} = RsaEx.encrypt(msg, public_key)
     {:ok, decrypted_msg} = RsaEx.decrypt(encrypted_msg, private_key)
+    js_encrypted_msg = "A4FcUjJ5FHgSdkd5zclNZRq74uMHc83IQcqBU/8+5xe3XzaWLZJrVv1sGiIrjCLN2A2olzIgakV5EjmgQI+eZB1R0WPmtKeEatajSGQ+fOX4SG3XCWHT3U9VsBKYYHb+co3pWsegdm+Uq35+sWrd7GoNERW61kC2tUYkVQOlpIQDArTHxprURDZeOtzbCkQsrO/kc+zEM6BHqOsniPzfctVJILZJfSvIL7bXL61I0FH/avIIbHPe8ho99vwv1+tTSc6Lkk/uIyT2njCYAUlA2AbD08Gfa5VVCb+Qq972G9KDzZtzRmFKsuSg+pPFCycNHOtLQ9kaVplw6mb112/T8g=="
+    {:ok, decrypted_msg} = RsaEx.decrypt(js_encrypted_msg, private_key)
 
     response = %{public_key: public_key,
                 private_key: private_key,
