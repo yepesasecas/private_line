@@ -7,10 +7,6 @@ defmodule PrivateLine.V1.KeysController do
     msg = Poison.encode!(%{first_name: "हिंद",
                             last_name: "Português",
                                 email: "Pусский@gmail.com"})
-    IO.inspect private_key
-    IO.inspect public_key
-    IO.inspect msg
-
     {:ok, encrypted_msg} = RsaEx.encrypt(msg, public_key)
     {:ok, decrypted_msg} = RsaEx.decrypt(encrypted_msg, private_key)
 
