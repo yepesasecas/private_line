@@ -23,7 +23,7 @@ defmodule PrivateLine.Router do
   scope "/api", PrivateLine do
     pipe_through :api
     scope "/v1", V1, as: :v1 do
-      get "/keys",  KeysController, :index
+      resources "/keys",  KeysController, except: [:edit, :new]
     end
   end
 end

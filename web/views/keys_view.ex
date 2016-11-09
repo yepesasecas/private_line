@@ -4,4 +4,8 @@ defmodule PrivateLine.V1.KeysView do
   def render("index.json", %{response: response}) do
     response
   end
+
+  def render("create.json", %{response: response}) do
+    response
+  end
 end
