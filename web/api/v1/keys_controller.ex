@@ -11,10 +11,19 @@ defmodule PrivateLine.V1.KeysController do
   end
 
   def create(conn, params) do
+    %{"destination_url" => destination_url, "destination_headers" => destination_headers} = params
     case PrivateLine.Decrypt.decrypt(params) do
       {:ok, res} ->
-        conn
-        |> render(%{response: %{destination_response: res}})
+        case PrivateLine.MyHttp.post(destination_url, res, destination_headers) do
+          # TODO mejorar PrivateLine.MyHttp.post() para parsear la respuesta de HTTPoison
+          {:ok, res} ->
+            conn
+            |> render(%{response: res})
+          {:error, error} ->
+            conn
+            |> put_status(400)
+            |> render(%{response: error})
+        end
       :error ->
         conn
         |> put_status(400)
