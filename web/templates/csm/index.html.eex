@@ -1,0 +1,7 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<title>CSM Health Probe Web-Application</title>
+<body bgcolor="#ffffff" link="#3366cc" vlink="#9999cc" alink="#0000cc">
+This file is served to the csm's to verify the health of WLS
+</body>
+</html>
