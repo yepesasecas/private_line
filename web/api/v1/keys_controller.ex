@@ -20,10 +20,9 @@ defmodule PrivateLine.V1.KeysController do
 
   def create(conn, params) do
     %{"destination_url" => destination_url, "destination_headers" => destination_headers} = params
-    case PrivateLine.Decrypt.decrypt(params) do
+    case PrivateLine.Decrypt.decrypt_and_merge(params) do
       {:ok, res} ->
         case PrivateLine.MyHttp.post(destination_url, res, destination_headers) do
-          # TODO mejorar PrivateLine.MyHttp.post() para parsear la respuesta de HTTPoison
           {:ok, res} ->
             conn
             |> render(%{response: res})
@@ -36,6 +35,10 @@ defmodule PrivateLine.V1.KeysController do
         conn
         |> put_status(400)
         |> render %{response: %{error: "400 Bad Request."}}
+      :bad_stone ->
+        conn
+        |> put_status(400)
+        |> render %{response: %{error: "400 Bad Stone Request."}}
     end
   end
 end
