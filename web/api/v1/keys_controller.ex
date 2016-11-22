@@ -31,11 +31,11 @@ defmodule PrivateLine.V1.KeysController do
       :error ->
         conn
         |> put_status(400)
-        |> render %{response: %{error: "400 Bad Request."}}
+        |> render(%{response: %{error: "400 Bad Request."}})
       :bad_stone ->
         conn
         |> put_status(400)
-        |> render %{response: %{error: "400 Bad Stone Request."}}
+        |> render(%{response: %{error: "400 Bad Stone Request."}})
     end
   end
 end
