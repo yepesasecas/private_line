@@ -11,8 +11,6 @@ defmodule PrivateLine.V1.DecryptStoneController do
         |> put_status(400)
         |> render(error_message: msg)
     end
-
-
   end
 
   def create(conn, _params) do
