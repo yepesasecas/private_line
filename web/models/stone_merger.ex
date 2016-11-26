@@ -17,7 +17,7 @@ defmodule PrivateLine.StoneMerger do
     end)
     case error? do
       true -> {:error, stone, destination_format, destination_variables, "Destination Format, Variables and Stone doesnt match"}
-      false -> {:ok, stone, destination_format, destination_variables, ""}
+      false -> {:ok, stone, destination_response, destination_variables, ""}
     end
   end
 end
