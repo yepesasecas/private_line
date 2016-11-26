@@ -24,8 +24,9 @@ defmodule PrivateLine.Router do
   scope "/api", PrivateLine do
     pipe_through :api
     scope "/v1", V1, as: :v1 do
-      resources "/keys",  KeysController, except: [:edit, :new]
-      resources "/decrypt_stone", DecryptStoneController
+      resources "/keys",  KeysController, only: [:index]
+      resources "/decrypt", DecryptController, only: [:create]
+      resources "/decrypt_and_merge", DecryptAndMergeController, only: [:create]
     end
   end
 end

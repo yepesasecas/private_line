@@ -2,8 +2,6 @@ defmodule PrivateLine.V1.KeysController do
   use PrivateLine.Web, :controller
 
   alias PrivateLine.Keys
-  alias PrivateLine.StoneDecrypt
-  alias PrivateLine.StoneMerger
 
   def index(conn, _params) do
     private_key = Keys.private_key
@@ -14,21 +12,5 @@ defmodule PrivateLine.V1.KeysController do
                 encrypted_msg: encrypted_msg }
 
     render conn, %{response: response}
-  end
-
-  def create(conn, %{"stone" => stone, "destination_format" => destination_format,
-                    "destination_variables" => destination_variables} = params) do
-    {status, stone, msg} = StoneDecrypt.decrypt(stone)
-    response = StoneMerger.merge({status, stone, destination_format, destination_variables, msg})
-
-    case response do
-      {:error, _stone, _destination_format, _destination_variables, _msg} ->
-        conn
-        |> put_status(400)
-        |> render("create.json", response: response)
-      _ -> conn
-        conn
-        |> render("create.json", response: response)
-    end
   end
 end

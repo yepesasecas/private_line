@@ -1,8 +1,10 @@
-defmodule PrivateLine.V1.DecryptStoneController do
+defmodule PrivateLine.V1.DecryptController do
   use PrivateLine.Web, :controller
 
+  alias PrivateLine.StoneDecrypt
+
   def create(conn, %{"stone" => encrypted_stone}) when is_list(encrypted_stone) do
-    case PrivateLine.StoneDecrypt.decrypt(encrypted_stone) do
+    case StoneDecrypt.decrypt(encrypted_stone) do
       {:ok, stone, _msg} ->
         conn
         |> render(stone: stone)
