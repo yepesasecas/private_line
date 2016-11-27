@@ -8,6 +8,7 @@ defmodule PrivateLine.StoneDecrypt do
   # ------------------------------------------------------------------
 
   def decrypt(encrypted_stone_list) when is_list(encrypted_stone_list) do
+    :timer.sleep(1000)
     {:ok, encrypted_stone_list, ""}
     |> decode64
     |> decrypt_stone
@@ -60,7 +61,7 @@ defmodule PrivateLine.StoneDecrypt do
     {:error, stone, msg}
   end
 
-  defp toMap({:ok, stone, msg}) do
+  defp toMap({:ok, stone, _msg}) do
     case Poison.decode(stone) do
       {:ok, stoneMap} -> {:ok, stoneMap, ""}
       {:error, _} -> {:error, stone, "No valid JSON format"}

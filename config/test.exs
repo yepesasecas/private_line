@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :private_line, PrivateLine.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "private_line_test",
+  username: "andresyepes",
+  password: "",
+  database: "private_line_dev",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
