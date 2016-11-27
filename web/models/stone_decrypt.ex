@@ -8,7 +8,6 @@ defmodule PrivateLine.StoneDecrypt do
   # ------------------------------------------------------------------
 
   def decrypt(encrypted_stone_list) when is_list(encrypted_stone_list) do
-    :timer.sleep(1000)
     {:ok, encrypted_stone_list, ""}
     |> decode64
     |> decrypt_stone
