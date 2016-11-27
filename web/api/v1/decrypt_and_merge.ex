@@ -1,11 +1,9 @@
 defmodule PrivateLine.V1.DecryptAndMergeController do
   use PrivateLine.Web, :controller
-
   alias PrivateLine.StoneDecrypt
   alias PrivateLine.StoneMerger
 
-  def create(conn, %{"stone" => stone, "destination_format" => destination_format,
-                    "destination_variables" => destination_variables}) do
+  def create(conn, %{"stone" => stone, "destination_format" => destination_format, "destination_variables" => destination_variables}) do
     {status, stone, msg} = StoneDecrypt.decrypt(stone)
     response = StoneMerger.merge({status, stone, destination_format, destination_variables, msg})
 
