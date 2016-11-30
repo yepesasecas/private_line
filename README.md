@@ -29,7 +29,7 @@ Get Private line public Key
 
 ```js
  $.ajax({
-    url: "/users/1",
+    url: "/api/v1/keys",
     dataType: "json",
     type : "GET",
     success : function(r) {
