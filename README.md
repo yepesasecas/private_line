@@ -47,7 +47,7 @@ Decrypt Stone to a JSON format
 
 * **URL**
 
-  /api/v1/decrypt_stone
+  /api/v1/decrypt
 
 * **Method:**
 
@@ -78,9 +78,97 @@ Decrypt Stone to a JSON format
 * **Sample Call:**
 
 ```js
+ data = {
+     stone: "recmLAWv9BxD7qPHlX6GDUqFYvKnCB31Nne5InprhVyUseb2bCIZL+Zd" +
+            "HKm8l2j9EIiJKT9tIMCZU5OmSZ2i9oMZ8QwimAwEGGYG26ftbLdDvFt" +
+            "iACetGfvGOxGPRZ2MSFFCmHuM8jZH42R1ho9TVqfzNC+WW7lJVN6D8W" +
+            "pIzbIh919pDQRL/NdE9TFMXar59xafkjAlJbXe/K1/rjpxATTwf+guE" +
+            "QqmZlErtzw/I9gAKjHxvcF+gf/wEFjSOANAAjBzQDGow42JNtU0wgi6" +
+            "L40aguFXhD8QcNART54kHmSoGx7P1POm22dgJ+ZorT4g5s6DhFOUY1u" +
+            "BxwN6MCURjg=="
+  }
+
  $.ajax({
-    url: "/api/v1/decrypt_stone",
+    url: "/api/v1/decrypt",
     dataType: "json",
+    data: data,
+    type : "POST",
+    success : function(r) {
+      console.log(r);
+    }
+  });
+```
+
+* **Notes:**
+:)
+
+**Decrypt and Merge Stone**
+----
+Decrypt Stone to a JSON format and merge with a Destination Format.
+
+* **URL**
+
+  /api/v1/decrypt_and_merge
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `stone=[String]`<br />
+   'destination_format'<br />
+   'destination_variables'<br />
+  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ stone : {...}, destination_format: {...}`
+ 
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "unable to decode64"}` <br />
+    **Details:** Data param `stone` is not coded in Base64. PrivateLine was not able to decode Base64
+    
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "No valid JSON format"}` <br />
+    **Details:** Data param `stone` is not a valid JSON.
+    
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Destination Format, Variables and Stone doesnt match"}` <br />
+    **Details:** Data param `stone` doesnt contain key defined in `destination_variables`. Verify `Stone` content and `destination_variables` array.
+    
+
+* **Sample Call:**
+
+```js
+  data = {
+    stone: "recmLAWv9BxD7qPHlX6GDUqFYvKnCB31Nne5InprhVyUseb2bCIZL+Zd" +
+           "HKm8l2j9EIiJKT9tIMCZU5OmSZ2i9oMZ8QwimAwEGGYG26ftbLdDvFt" +
+           "iACetGfvGOxGPRZ2MSFFCmHuM8jZH42R1ho9TVqfzNC+WW7lJVN6D8W" +
+           "pIzbIh919pDQRL/NdE9TFMXar59xafkjAlJbXe/K1/rjpxATTwf+guE" +
+           "QqmZlErtzw/I9gAKjHxvcF+gf/wEFjSOANAAjBzQDGow42JNtU0wgi6" +
+           "L40aguFXhD8QcNART54kHmSoGx7P1POm22dgJ+ZorT4g5s6DhFOUY1u" +
+           "BxwN6MCURjg==",
+    destination_format: "<vaulted-shopper xmlns='http://ws.plimus.com'><first-name>" +
+                         "{{{billing_first_name}}}</first-name><last-name>{{{billing_last_name}}}</last-name>" +
+                         "<payment-sources><credit-card-info><credit-card><card-number>{{{billing_address1}}}</card-number>" +
+                         "<security-code>{{{billing_address2}}}</security-code>{{{billing_city}}}" +
+                         "<expiration-month>04</expiration-month><expiration-year>2018</expiration-year>" +
+                         "</credit-card><billing-contact-info><first-name>Juan Carlos</first-name>" +
+                         "<last-name>Lude&#xF1;a</last-name><address1>las palmas</address1><address2/>" +
+                         "<city>New York</city><state>Alaska</state><zip>99812</zip><country>PE</country>" +
+                         "</billing-contact-info></credit-card-info></payment-sources></vaulted-shopper>",
+  destination_variables: ["billing_first_name", "billing_last_name", "billing_address1", "billing_address2", "billing_city"]                       
+  }
+
+ $.ajax({
+    url: "/api/v1/decrypt_and_merge",
+    dataType: "json",
+    data : data,
     type : "POST",
     success : function(r) {
       console.log(r);
