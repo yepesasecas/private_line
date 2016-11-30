@@ -1,4 +1,8 @@
 *API doc*
+----
+Private Line API documentation
+
+
 **Get Public Key**
 ----
 Get Private line public Key
