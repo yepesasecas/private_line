@@ -39,5 +39,54 @@ Get Private line public Key
 ```
 
 * **Notes:**
+  * For debugging purposes, GET /keys is returning also `private_key` and a `encrypted_msg` to play around.
+  
+**Decrypt Stone**
+----
+Decrypt Stone to a JSON format
 
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._> 
+* **URL**
+
+  /api/v1/decrypt_stone
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `stone=[String]`
+  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ stone : {...} }`
+ 
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "unable to decode64"}` <br />
+    **Details:** Data param `stone` is not coded in Base64. PrivateLine was not able to decode Base64
+    
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "No valid JSON format"}` <br />
+    **Details:** Data param `stone` is not a valid JSON.
+    
+
+* **Sample Call:**
+
+```js
+ $.ajax({
+    url: "/api/v1/decrypt_stone",
+    dataType: "json",
+    type : "POST",
+    success : function(r) {
+      console.log(r);
+    }
+  });
+```
+
+* **Notes:**
+:)
