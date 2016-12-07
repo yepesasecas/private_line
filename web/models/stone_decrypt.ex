@@ -41,7 +41,7 @@ defmodule PrivateLine.StoneDecrypt do
 
   defp concat({:error, stone, msg}), do: {:error, stone , msg}
   defp concat({:ok, stone_list, _msg}) do
-    {:ok, Enum.join(stone_list, " "), ""}
+    {:ok, Enum.join(stone_list, ""), ""}
   end
 
   defp toMap({:error, stone, msg}), do: {:error, stone, msg}
