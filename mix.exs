@@ -19,7 +19,7 @@ defmodule PrivateLine.Mixfile do
   def application do
     [mod: {PrivateLine, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :httpoison]]
+                    :phoenix_ecto, :postgrex, :httpoison, :alchemy]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,6 +39,7 @@ defmodule PrivateLine.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
     #  custom deps
+     {:alchemy, "~> 0.0.1"},
      {:httpoison, "~> 0.10.0"},
      {:exrm, "~> 1.0"}]
   end

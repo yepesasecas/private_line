@@ -1,4 +1,5 @@
 %{"abacus": {:hex, :abacus, "0.3.2", "ab81e97417c9ab8daa502f678b31377c76cb7ed8a5211a323d4d44a2228a46d2", [:mix], []},
+  "alchemy": {:hex, :alchemy, "0.0.1", "5682ea0075b6b62718363fe8a37d9aac34d7359eec93aecd9e6d06fee5fd06eb", [:mix], [{:uuid, "~> 1.1", [hex: :uuid, optional: false]}]},
   "base64url": {:hex, :base64url, "0.0.1", "36a90125f5948e3afd7be97662a1504b934dd5dac78451ca6e9abf85a10286be", [:rebar], []},
   "bbmustache": {:hex, :bbmustache, "1.0.4", "7ba94f971c5afd7b6617918a4bb74705e36cab36eb84b19b6a1b7ee06427aa38", [:rebar], []},
   "certifi": {:hex, :certifi, "0.7.0", "861a57f3808f7eb0c2d1802afeaae0fa5de813b0df0979153cbafcd853ababaf", [:rebar3], []},
@@ -35,4 +36,5 @@
   "relx": {:hex, :relx, "3.21.1", "f989dc520730efd9075e9f4debcb8ba1d7d1e86b018b0bcf45a2eb80270b4ad6", [:rebar3], [{:bbmustache, "1.0.4", [hex: :bbmustache, optional: false]}, {:cf, "0.2.1", [hex: :cf, optional: false]}, {:erlware_commons, "0.21.0", [hex: :erlware_commons, optional: false]}, {:getopt, "0.8.2", [hex: :getopt, optional: false]}, {:providers, "1.6.0", [hex: :providers, optional: false]}]},
   "rsa": {:hex, :rsa, "0.0.1", "a63069f88ce342ffdf8448b7cdef4b39ba7dee3c1510644a39385c7e63ba246f", [:mix], []},
   "rsa_ex": {:hex, :rsa_ex, "0.1.1", "eb94ec67442722b695c7e067098da17e167b044bf1d53c2d6b81fe66253597ee", [:mix], []},
-  "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.1", "28a4d65b7f59893bc2c7de786dec1e1555bd742d336043fe644ae956c3497fbe", [:make, :rebar], []}}
+  "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.1", "28a4d65b7f59893bc2c7de786dec1e1555bd742d336043fe644ae956c3497fbe", [:make, :rebar], []},
+  "uuid": {:hex, :uuid, "1.1.5", "96cb36d86ee82f912efea4d50464a5df606bf3f1163d6bdbb302d98474969369", [:mix], []}}
