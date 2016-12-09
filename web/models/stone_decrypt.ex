@@ -9,7 +9,7 @@ defmodule PrivateLine.StoneDecrypt do
     |> decode64
     |> decrypt_stone
     |> concat
-    |> toMap
+    |> to_map
   end
 
   # ------------------------------------------------------------------
@@ -44,8 +44,8 @@ defmodule PrivateLine.StoneDecrypt do
     {:ok, Enum.join(stone_list, ""), ""}
   end
 
-  defp toMap({:error, stone, msg}), do: {:error, stone, msg}
-  defp toMap({:ok, stone, _msg}) do
+  defp to_map({:error, stone, msg}), do: {:error, stone, msg}
+  defp to_map({:ok, stone, _msg}) do
     case Poison.decode(stone) do
       {:ok, stoneMap} -> {:ok, stoneMap, ""}
       {:error, _} -> {:error, stone, "No valid JSON format"}
